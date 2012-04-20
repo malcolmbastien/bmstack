@@ -1,0 +1,5 @@
+# BMStack
+
+This is a project I started in the summer of 2009 and released online in the winter of 2010. I've lost interest in maintaining the website or the project, but would like to share the work I've done so far. The project is running on what's now an older version of Django, and it has bugs, but provides a good base for any project working on business model canvases.
+
+The work of this project is based on the ideas and the book of [Business Model Generation](http://www.businessmodelgeneration.com/).
