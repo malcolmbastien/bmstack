@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Account Settings</h2>
+	</div>
+	<div class="span-7 container_inner">
+		<form action="/{{ account }}/settings/" method="POST">{% csrf_token %}
+				{% for field in form %}
+					<div class="setting-fields span-7">
+						{% if field.field.required %}
+							<strong>{{ field.label }}</strong>
+						{% else %}
+							{{ field.label }}
+						{% endif %}<br />
+						{{ field }}
+					</div>
+				{% endfor %} 
+				<hr class="space" />
+				<div class="setting-fields span-7">
+				    <input type="submit" value="Submit" />
+					<hr class="space" />
+					<a href="/{{ account }}/">Cancel</a>
+				</div>
+		</form>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/">Dashboard</a></li>
+	</ul>
+</div>
+{% endblock %}

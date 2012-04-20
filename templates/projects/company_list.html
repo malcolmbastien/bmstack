@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Company List
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>System Users</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/">Projects</a></li>
+		</ul>
+	</div>
+
+	<div class="container_inner">
+		{% for company, employees in company_list  %}
+			<div class="company span-17">
+				<h3>{{ company }}</h3>
+				{% if user.get_profile.is_prime_company %}<p class="small"><a class="button" href="/{{ account }}/companies/{{ company.id }}/people/new/">Add a new person</a>{% endif %}
+				<div class="span-5">
+					<div class="span-1"></div>
+					<div class="span-4 last">
+						<strong>{{ company }}</strong>
+						<a href="mailto:{{ company.email }}">{{ company.email }}</a>
+						<ul>
+							{% if company.web_address %}<li>Website: {{ company.web_address }}</li>{% endif %}
+							{% if company.office %}<li>Phone: {{ company.office }}</li>{% endif %}
+							{% if company.fax %}<li>Fax: {{ company.fax }}</li>{% endif %}
+							{% if company.address %}<li>Address: {{ company.address }}</li>{% endif %}
+							{% if company.city %}<li>City: {{ company.city }}</li>{% endif %}
+							{% if company.state %}<li>State/Province: {{ company.state }}</li>{% endif %}
+							{% if company.postal_code %}<li>Zip/Postal Code: {{ company.postal_code }}</li>{% endif %}
+						</ul>
+					</div>
+				</div>
+				{% for employee in employees %}
+			    	<div class="span-5 append-bottom">
+						<div class="span-1"><img class="employee" src="{{ employee.user.get_profile.profile_image }}" /></div>
+						<div class="span-4 last">
+							<strong>{{ employee.user.get_full_name }}</strong>
+							<a href="mailto:{{ employee.user.email }}">{{ employee.user.email }}</a>
+							<ul class="small">
+								{% if employee.title %}<li>{{ employee.title }}</li>{% endif %}
+								{% if employee.im_service and employee.im_name %}<li>{{ employee.im_service }}: {{ employee.im_name }}</li>{% endif %}
+								{% if employee.mobile %}<li>Mobile: {{ employee.mobile }}</li>{% endif %}
+								{% if employee.office %}<li>Office: {{ employee.office }}{% if employee.office_ext %} Ex. {{ employee.office_ext }}{% endif %}</li>{% endif %}
+								{% if employee.home %}<li>Home: {{ employee.home }}</li>{% endif %}
+								{% if employee.fax %}<li>Fax: {{ employee.fax }}</li>{% endif %}
+							</ul>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/">Dashboard</a></li>
+		{% if user.get_profile.is_prime_company %}<li><a href="/{{ account }}/companies/new/">Add a New Company</a></li>{% endif %}
+	</ul>
+</div>
+<div class="span-5 sidebar last">
+	<p>If you are seeing broken links, make sure you have a <a href="http://en.gravatar.com/">gravatar</a> associated with your email.</p>
+</div>
+
+{% endblock %}

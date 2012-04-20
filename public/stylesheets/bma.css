@@ -1,0 +1,191 @@
+@import url('screen.css');
+
+body {background-color: #F3F3F3; }
+
+a { text-decoration: none; color: #107FC9; }
+a:hover {text-decoration: underline; color: #107FC9; }
+h1 a, h2 a {text-decoration: none; color: #333; }
+h1.account {float: left; }
+h1 { margin: 0; }
+h2.project { float: left; margin: 4px 0 -4px 10px; }
+h2.project a { color: #666; }
+h2 { margin-bottom: 0; }
+h3.canvas-title { margin: 0 0 8px 15px; }
+h3 input { width: 81%; height: 25px; font-size: 1.05em; }
+h4 { margin: 0; }
+form { float: left; padding: 0; margin: 0 0 30px 0; }
+form#canvas-form { margin: 0; }
+ul { list-style-type: none; }
+div.header {float: left; width: 100%; border: none; border-bottom: 1px dotted #F1A73A; background-color: #fff; margin-bottom: 10px; }
+div.nav a, div.nav div {padding: 4px; }
+div.nav {padding: 0; margin: 0; }
+div.user {float: right;}
+
+a.red { color: red; text-decoration: underline;}
+
+textarea#id_comment { height: 50px; float: left; width: 100%; margin: 0 0 10px 0;}
+
+ul.errorlist { margin: 0; }
+
+.error { padding: 0.1em 0.8em; float: left; margin: 0 0 10px 0; width: 96%; text-align: center;}
+
+.box {background-color: #EDE9DE;}
+.white {padding:1.5em; margin-bottom:1.5em; background-color: #FFF; border: 3px solid #ccc; }
+.orange {background-color: #F1A73A;}
+.flour {background-color: #EDE9DE;}
+.tangles {background-color: #E5E0CD; padding: 4px 0 0 4px; margin-left: -4px;}
+
+div.generic_container { margin-bottom:1.5em; background-color: #FFF; border: 1px solid #ddd; }
+
+div.container_inner { float: left; padding: 0 1.5em 30px 1.5em; margin: 0;}
+div.container_inner ul { padding: 0; }
+div.container_inner ul li { margin: 0 10px 0 0;}
+/* Swaps the colour scheme
+div.header {background-color: #F1A73A;}
+body {background-color: #E5E0CD;} */
+.orange {background-color: #EDE9De;}
+
+ul.recent_activity li { padding: 2px 0; }
+ul.recent_activity li strong { float: left; padding: 10px 0 0 0; }
+
+div.pagination { padding: 20px 0 0 0;}
+
+.orange {padding-top: 1.5em;}
+.orange p {padding: 0 1em;}
+.orange ul li {list-style: none;}
+.orange ul li a {font-size: 1.2em;}
+
+div.page_header { float: right; width: 100%; padding: 0; margin: 0 0 20px 0; border-bottom: 1px dashed #ccc;}
+div.page_header h2, div.page_header > a { display: inline; float: left; margin: 5px 0 5px 15px; font-size: 1.5em;}
+div.page_header span { display: inline; float: left; margin: 10px 0 5px 15px; }
+div.page_header ul { float: right; margin: 0 10px 0 0; padding: 0;}
+div.page_header ul li { float: left; display: inline; margin: 10px;}
+div.page_header ul li a { color: #107FC9;}
+div.page_header ul li a:hover { color: #107FC9;}
+
+div.sidebar { background-color: #fff; border: 1px solid #dfdfdf; margin-bottom: 10px; }
+div.sidebar h4 { margin: 3px; }
+div.sidebar p { padding: 3px; padding-bottom: 5px; margin: 0;}
+div.sidebar ul { padding: 0; margin: 0; }
+div.sidebar ul li { border-bottom: 1px dotted #E5E0CD; padding: 5px 5px 5px 4px;}
+div.sidebar ul li a { width: 100%;}
+
+div.update { margin: 0 0 20px 0; }
+
+.note-orange, .or { background-color: #F0A848; }
+.note-yellow, .yl { background-color: #FFDF52; }
+.note-blue, .bl { background-color: #48A8C0; }
+.note-green, .gr { background-color: #C0D830; }
+.note-purple, .pr { background-color: #A86090; }
+
+.note-option { float: left; margin: 0 0 0 -4px;}
+
+.nav li { display: inline; }
+
+div.titles { margin-top: 30px;}
+
+div#kp, div#ka, div#kr, div#cr, div#ch { float: left;}
+div.canvas { background: #222; border: 4px solid #222; margin-left: -21px; }
+div.canvas li { list-style: none; margin-left: -30px; }
+div.canvas div.span-6, div.canvas div.span-5, div.canvas div.span-4 { margin-right: 4px; }
+
+div.canvas h4 { margin: 3px 0 0 6px; font-weight: bold; float: left; }
+div.canvas input { width: 100%; clear: both; margin: 0 0 0 4px; }
+div.canvas ul { float: left; margin: 0; padding: 4px 0; }
+div.canvas ul li { float: left; width: 90%; margin: 0; padding: 0px; }
+
+
+div.container_inner input { margin: 0; }
+textarea#id_canvas-notes { width: 100%; height: 70px; float: left; width: 100%; margin: 0 0 10px 0; }
+
+/* Canvas Styles */
+div#kp {height:410px; float: left; position: relative; background:#FFF;}
+div#ka {height:203px; background:#FFF;}
+div#kr {height:203px; background:#FFF;}
+div#vp {height:410px; background:#FFF;}
+div#cr {height:203px; background:#FFF;}
+div#ch {height:203px; background:#FFF;}
+div#cs {height:410px; background:#FFF;}
+div#co {height:200px; background:#FFF;}
+div#rs {height:200px; background:#FFF;}
+div #kp, div#cs { width: 162px; }
+div #co, div#rs { width: 473px; }
+
+div#kp, div#ka, div#kr, div#vp, div#cr, div#ch, div#cs {margin: 0 0 4px 0; float: left;}
+div#co, div#rs { margin: 0px; }
+div#ka, div#kr, div#cr, div#vp, div#ch, div#cs, div#rs {margin-left: 4px;}
+
+
+ul#kp-fields, ul#vp-fields, ul#cs-fields { height:353px; width: 100%; }
+ul#ka-fields, ul#kr-fields, ul#cr-fields, ul#ch-fields, ul#co-fields, ul#rs-fields {height: 143px; width: 100%; }
+
+div.canvas ul.form-field-list { float: left; width: 100%; height: 100%; margin-top: 4px;}
+div.canvas ul.field-list li { position: relative; border-bottom: 2px solid #CCC; border-right: 1px solid #CCC; width: 135px; float: left; margin: 0 0 4px 4px; }
+ul#co-fields, ul#rs-fields { width: 100%; }
+ul#co-field-list li, ul#rs-field-list li { margin-left: 10px; }
+div.canvas ul.field-list li > span.field-text { float: left; width: 127px; padding: 2px 0 0 4px;}
+div.canvas ul.field-list li > span.more { font-size: 0.8em;}
+
+div.field-control { float: left; width: 125px; margin: 5px 0 0 4px; display: none;}
+div.colours { border: 1px solid #666; float: left; width: 100%; }
+
+div.canvas ul.field-list li > div.field-control span.note-yellow { float: left; width: 25px; height: 20px;}
+div.canvas ul.field-list li > div.field-control span.note-blue { float: left; width: 25px; height: 20px;}
+div.canvas ul.field-list li > div.field-control span.note-orange { float: left; width: 25px; height: 20px;}
+div.canvas ul.field-list li > div.field-control span.note-green { float: left; width: 25px; height: 20px;}
+div.canvas ul.field-list li > div.field-control span.note-purple { float: left; width: 25px; height: 20px;}
+
+div#rs h4, div#co h4 { width: 100%;}
+
+div.canvas input.field-text { float: left; width: 127px; margin: 5px 0 0 4px;}
+
+span.field-comment { float: left; color: #666; width: 127px; margin: 2px 0 0px 4px; font-size: 0.9em; }
+textarea.field-comment { height: 40px; width: 127px; margin: 5px 0 0 4px; background-color: transparent; font-size: 0.9em;}
+span.done { float: left; font-weight: bold; width: 100%; background-color: lightgreen; border: 1px solid #999; text-align: center; margin: 5px 0 0 0;}
+span.delete-note { float: left; font-weight: bold; width: 100%; background-color: red; border: 1px solid #999; text-align: center; margin: 5px 0 5px 0;}
+
+ul#canvas-list {list-style-type: none; margin: 0 20px 0 0; padding: 0;}
+ul#canvas-list li { float: left; width: 100%; margin: 0 0 15px 0;}
+ul#canvas-list li div { float: left; width: 100%;}
+ul#canvas-list li div strong { float: left;}
+ul#canvas-list li div a {text-decoration: none; color: #333;}
+ul#canvas-list li div a:hover {text-decoration: underline; }
+ul#canvas-list li div a img { margin: 8px 0 0 8px; }
+ul#canvas-list li div span.canvas-info { float: left; margin: 5px 0 0 15px; font-size: 1.3em;}
+ul#canvas-list li div span.canvas-info strong { text-decoration: underline;}
+ul#canvas-list li div span.canvas-meta {float: left; width: 100%; margin: 10px 0 0 0px; padding: 0 0 0 0; font-size: 0.9em; text-indent: 8px; }
+ul#canvas-list li div img { float: left; margin: 0 0 0 0;}
+
+div.canvas-detail { border-top: none;}
+div.canvas-detail div.container-inner { padding: 1.5em 1.5em 30px 1.5em; }
+div.paginaton {float: left; width: 100%;}
+
+div.company { float: left; margin-bottom: 20px; }
+
+div.canvas-comment { margin: 0 0 10px 0; float: left; }
+div.canvas-comment p { margin: 0 0 0 0;}
+
+div.comment-form form, div.comment-form textarea { width: 100%; float: left; }
+
+div.canvas-control strong { font-size: 1.2em; }
+div.canvas-control textarea { height: 70px; }
+div.canvas-control p { margin: 0;}
+
+div#project_id, div#account, div#canvas_set_id, div#canvas_id { display: none; }
+
+p.hero-text { font-weight: bold; font-size: 2.4em;}
+div.homepage_container { background-color: #fff; }
+
+img.canvas-creator { float: right; height: 80px; width: 80px; border: 1px solid #999; margin: 0 10px 0 0;}
+img.profile_image { float: right; height: 60px; width: 60px; border: 1px solid #999; }
+img.comment_profile_image { float: right; height: 48px; width: 48px; border: 1px solid #999; }
+img.employee { float: right; height: 28px; width: 28px; margin-top: 3px; border: 1px solid #999; }
+div.comments { float: left; margin: 10px 0 20px 0;}
+div.comments p { float: left;}
+
+div.update-comment-form { margin-top: 10px;}
+
+div.setting-fields select { margin: 0;}
+div.setting-fields { margin: 5px 0; }
+div.setting-labels { text-align: right; }
+div.setting-forms { float: left;}

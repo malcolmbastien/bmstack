@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Canvas Set Detail
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<a href="/{{ account }}/projects/{{ project.id }}/canvases/">All Versions</a>
+		
+		<ul class="container_nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="/{{ account }}/">Projects</a></li>
+			<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/">Canvases</a></li>
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+		{% if canvases %}
+		    <ul id="canvas-list">
+		        {% for canvas in canvases.object_list %}
+		            <li>
+		                <div>
+							<a href="{{ canvas.get_absolute_url }}"><img src="/site_media/images/mini-canvas.png" alt="mini canvas" /></a>
+							<span class="canvas-info">
+								<strong><a href="{{ canvas.get_absolute_url }}">{{ canvas.canvas_set.name }}</a></strong><br />
+									Version: {{ canvas.version }}
+							</span>
+							<span class="canvas-meta">Created: {{ canvas.created_at }} by {{ canvas.created_by.get_full_name }}</span>
+						</div>
+		            </li>
+		        {% endfor %}
+		    </ul>
+			<div class="pagination">
+			    <span class="step-links">
+			        {% if canvases.has_previous %}
+			            <a href="?page={{ canvases.previous_page_number }}">previous</a>
+			        {% endif %}
+
+			        <span class="current">
+			            Page {{ canvases.number }} of {{ canvases.paginator.num_pages }}.
+			        </span>
+
+			        {% if canvases.has_next %}
+			            <a href="?page={{ canvases.next_page_number }}">next</a>
+			        {% endif %}
+			    </span>
+			</div>
+		{% else %}
+		    <p>No canvases have been created yet!</p>
+		{% endif %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a class="button" href="/{{ account }}/projects/{{ project.id }}/canvases/{{ canvas_set.id }}/new/">Add a new version</a></li>
+	</ul>
+</div>
+<div class="span-5 sidebar last">
+	<h4>Users Notifications</h4>
+	<p>These users will receive a new email when a new activity occurs</p>
+	<ul>{{ user_list }}
+		{% for notify in notification_list %}
+			{% if notify.subscribed %}
+				<li>{{ notify.account_user.user.get_full_name }} {% if notify.account_user.user == user %}<a href="/{{ account }}/projects/{{ project.id }}/canvases/{{ canvas_set.id}}/subscription/">unsubscribe</a>{% endif %}</li>
+			{% endif %}
+		{% endfor %}
+		{% if not notify_this_user %}
+		<li>You are not currently subscribed.<br />
+		<a class="button" href="/{{ account }}/projects/{{ project.id }}/canvases/{{ canvas_set.id }}/subscription/">Subscribe</a></li>
+		{% endif %}
+	</ul>
+</div>
+{% endblock %}

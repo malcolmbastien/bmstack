@@ -1,0 +1,146 @@
+<html>
+<head>
+{% load webdesign %}
+<title>{% block title %} {% endblock %}- Business Model App</title>
+<link rel="stylesheet" href="/site_media/stylesheets/bma.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/jquery-ui-1.8.2.custom.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/print.css" type="text/css" media="print">
+<script type="text/javascript" src="/site_media/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('div.sidebar > ul > li > a').button();
+});
+</script>
+{{ form.media }}
+</head>
+<body>
+	<div class="header">	
+		<div class="nav">
+			<div class="container">
+				<div class="span-24 last">
+					<div class="user">
+						{% if user.is_authenticated %}
+							<strong>{{ user.get_full_name }}</strong>. <a href="/logout">Logout</a>
+						{% else %}
+							<p>Welcome, new user. Please <a href="/login">Login</a>.</p>
+						{% endif %}
+						<a href="/settings">Settings</a>
+						<a href="/launchpad/">Launchpad</a>
+					</div>
+					<div class="titles">
+						<h1 class="account"><a href="{{ account.get_absolute_url }}">{{ account.site_name }}</a></h1>
+						<h2 class="idea">{% if idea %}<a href="{{ idea.get_absolute_url }}">{{ idea }}</a>{% endif %}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="span-18 generic_container">
+			<div class="page_header">
+				<h2>The Business Model Canvas</h2>
+			</div>
+			
+			<div class="container_inner">
+				<h2>What is it?</h2>
+				<p></p>
+				
+				<h2>What am I supposed to write?</h2>
+				<p>The business model canvas is made of nine different blocks. Each one describes an element of your business model.</p>
+				<p>Use each block to practice answering questions related to the different elements of your business model, such as:</p>
+				<ul>
+					<li>
+						<h3>Customer Segments</h3>
+						<ul>
+							<li>For whom are we creating value?</li>
+							<li>Who are our most important customers?</li>
+
+						</ul>
+					</li>
+					<li>
+						<h3>Customer Relationships</h3>
+						<ul>
+							<li>What type of relationship does each of our customer segments expect us to establish and maintain with them?</li>
+							<li>Which ones have we established?</li>
+							<li>How are they integrated with the rest of our business model?</li>
+							<li>How costly are they?</li>
+						
+						</ul>
+					</li>
+					<li>
+						<h3>Channels</h3>
+						<ul>
+							<li>Through which channels do our customer segments want to be reached?</li>
+							<li>How are we reaching them now?</li>
+							<li>How are our channels integrated?</li>
+							<li>Which ones work best?</li>
+							<li>Which ones are most cost-efficient?</li>
+							<li>How are we integrating them with customer routines?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Value Propositions</h3>
+						<ul>
+							<li>What value do we deliver to the customer</li>
+							<li>Which one of our customer's problems are we helping to solve?</li>
+							<li>What bundles of products and services are we offering to each customer segment?</li>
+							<li>Which customer needs are we satisfying?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Key Activities</h3>
+						<ul>
+							<li>What key activities do our value propositions require?</li>
+							<li>Our distribution channels?</li>
+							<li>Customer relationships?</li>
+							<li>Revenue streams?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Key Resources</h3>
+						<ul>
+							<li>What key resources do our value propositions require?</li>
+							<li>Our distribution channels? Customer relationships?</li>
+							<li>Revenue Streams?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Key Partners</h3>
+						<ul>
+							<li>Who are our key partners?</li>
+							<li>Who are our key suppliers?</li>
+							<li>Which key resources are we acquiring from partners?</li>
+							<li>Which key activities do partners perform?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Cost Structure</h3>
+						<ul>
+							<li>What are the most important costs inherent in our business model?</li>
+							<li>Which key resources are the most expensive?</li>
+							<li>Which key activities are the most expensive?</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Revenue Streams</h3>
+						<ul>
+							<li>For what value are our customer really willing to pay?</li>
+							<li>For what do they currently pay?</li>
+							<li>How are they currently paying?</li>
+							<li>How would they prefer to pay?</li>
+							<li>How much does each revenue stream contribute to overall revenues?</li>
+						</ul>
+					</li>
+				</ul>
+				
+				<h2>What do I do after I finish?</h2>
+				<p>When you finish adding all the blocks to your business model canvas and after you add notes to help your team understand your business model ideas, it's time for the feedback to start. Get your whole team involved with giving feedback on your canvas, and encourage other to develop their own business model canvases where you left off.</p>
+			</div>
+       <div id="footer" class="span-24 last quiet">
+		Managed using BM APP.
+       </div>
+   </div>
+</body>
+</html>

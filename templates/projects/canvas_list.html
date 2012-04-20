@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Canvas List
+{% endblock %}
+
+{% block index %} 
+<div class="span-16 white">
+	<div class="page_header">
+		<h2>Canvases</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/">Canvases</a></li>
+			<li><a href="/{{ account }}/projects/{{ project.id }}/updates/">Updates</a></li>
+		</ul>
+	</div>
+	{% if canvases %}
+	    <ul id="canvas-list">
+	        {% for canvas in canvases.object_list %}
+	            <li>
+	                <div>
+						<a href="{{ canvas.get_absolute_url }}"><img src="/site_media/images/mini-canvas.png" alt="mini canvas" /></a>
+						<span class="canvas-info"><strong><a href="{{ canvas.get_absolute_url }}">{{ canvas.label }}</a></strong></span>
+						<span class="canvas-meta">Created: {{ canvas.created_at }}, Iterations = {{ canvas.iteration }}</span>
+					</div>
+	            </li>
+	        {% endfor %}
+	    </ul>
+		<div class="pagination">
+		    <span class="step-links">
+		        {% if canvases.has_previous %}
+		            <a href="?page={{ canvases.previous_page_number }}">previous</a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ canvases.number }} of {{ canvases.paginator.num_pages }}.
+		        </span>
+
+		        {% if canvases.has_next %}
+		            <a href="?page={{ canvases.next_page_number }}">next</a>
+		        {% endif %}
+		    </span>
+		</div>
+	{% else %}
+	    <p>No canvases have been created yet!</p>
+	{% endif %}
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/new/">Create new canvas</a></li>
+	</ul>
+</div>
+
+{% endblock %}

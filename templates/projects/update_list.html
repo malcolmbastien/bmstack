@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+Update List
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Updates</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/">Projects</a></li>
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+		{% if updates %}
+	        {% for update in updates.object_list %}
+				<div class="span-18 update last">
+					<div class="span-2">
+						<img class="profile_image" src="{{ update.user.get_profile.profile_image }}" />
+					</div>
+					<div class="span-13 last">
+						<h3><a href="{{ update.get_absolute_url }}">{{ update.title }}</a></h3>
+	            		<p>{{ update.update|truncatewords_html:30 }} <span class="quiet">{{ update.created_at|timesince }} ago</span></p>
+					</div>
+				</div>
+	        {% endfor %}
+		{% else %}
+		    <p>No updates have been created yet!</p>
+		{% endif %}
+
+		{% if action_list.paginator.num_pages < 2 %}
+		{% else %}
+		<div class="pagination">
+		    <span class="step-links">
+		        {% if updates.has_previous %}
+		            <a href="?page={{ updates.previous_page_number }}">previous</a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ updates.number }} of {{ updates.paginator.num_pages }}.
+		        </span>
+
+		        {% if updates.has_next %}
+		            <a href="?page={{ updates.next_page_number }}">next</a>
+		        {% endif %}
+		    </span>
+		</div>
+		{% endif %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/new/">New Canvas</a></li>
+		<li><a href="new/">New Update</a></li>
+	</ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+Hi {{ name }},
+
+An comment has been added to the "{{ canvas }}" business model canvas. To read the comment visit this link:
+{{ link }}
+
+You've been sent this email because you've decided to track updates to your business model canvas. To stop receiving these emails visit this link and update your settings.
+{{ settings_link }}
+
+-- BM Stack Team

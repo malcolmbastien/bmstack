@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block index %}    
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Recent Updates</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">	
+		{% if projects %}
+		<h3>Your Projects:</h3>
+			<ul>
+			{% for project in projects %}
+				<li>
+					<h3><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></h3>
+					{% if project.note %}
+						<p>{{ project.note }}</p>
+					{% endif %}
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+		 <h3>Welcome!</h3>
+		 <p>Thank you for signing up!</p>
+		 <p>Once you <strong><a href="projects/new/">create your first project</a></strong> you'll be able to start building business model canvases.</p>
+		{% endif %}
+	
+		{% regroup actions by project as project_list %}
+		<ul class="recent_activity">
+		{% for project in project_list %}
+			<li class="span-18"><strong>{{ project.grouper }}</strong></li>
+			{% if project.list %}
+				{% for action in project.list %}
+					{% if forloop.counter < 6 %}
+						<li class="span-18">
+							{{ action.content_type|capfirst }}
+								<a href="{{ action.target_object.get_absolute_url }}">{{ action.target_object }}</a>
+						{{ action.verb }} {{ action.actor.get_full_name }}. <span class="quiet">{{ action.created_at|date:"M j"}}</span> 
+						</li>
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				<li>Updates to your project will show up here.</li>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		{% if user.get_profile.is_prime_company %}<li><a href="projects/new/">Create new: Project</a></li>{% endif %}
+	</ul>
+</div>
+{% endblock %}

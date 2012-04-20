@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load webdesign %}
+{% block title %}
+Project List
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Projects</h2>
+		<ul>
+			<li><a href="/{{ account }}/projects/">Projects</a></li>
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+	        {% for project in project_list %}
+	            <div>
+	                <h2><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></h2>
+	            </div>
+			{% empty %}
+			    <p>No have been created yet!</p>
+			{% endfor %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/projects/new/">Create a New Project</a></li>
+	</ul>
+</div>
+{% endblock %}

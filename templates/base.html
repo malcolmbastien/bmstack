@@ -1,0 +1,90 @@
+<html>
+<head>
+{% load webdesign %}
+<meta name="google-site-verification" content="R6kAssxTANpnWHTTGXKR8--J2jU65qpp_ikq0bfmZkE" />
+<title>{% block title %} {% endblock %}- Business Model Stack</title>
+<link rel="stylesheet" href="/site_media/stylesheets/bma.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/jquery-ui-1.8.6.custom.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/print.css" type="text/css" media="print">
+<script type="text/javascript" src="/site_media/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui-1.8.6.custom.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('div.sidebar-buttons > ul > li > a, a.button').button();
+	$('div.notice').delay(1000).fadeOut('slow');
+});
+{% block script %}{% endblock %}
+</script>
+{{ form.media }}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2364793-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+	<div class="header">	
+		<div class="nav">
+			<div class="container">
+				<div class="span-24 last">
+					<div class="user">
+						{% if user.is_authenticated %}
+						{% if account %}
+							{% if project %}
+								<a href="{{ project.get_edit_url }}/">Project Settings</a>
+								<a href="{{ user.get_profile.get_edit_url }}">My Profile</a>
+							{% else %}
+								<strong>{{ user.get_full_name }}</strong> <a href="{{ user.get_profile.get_edit_url }}">My Profile</a>
+								<!-- <a href="{{ account.get_absolute_url }}/account/">Account</a> -->
+								{% if user.get_profile.is_prime_company %}<a href="{{ account.get_absolute_url }}/settings/">Settings</a>{% endif %}
+							{% endif %}
+							<a href="/logout">Logout</a>
+						{% endif %}
+						{% else %}
+							<p>Welcome, new user. Please<a href="/login">Login.</a></p>
+						{% endif %}
+					</div>
+					<div class="titles">
+						{% if account %}
+							{% if project %}
+								<h1 class="account"><a href="{{ project.get_absolute_url }}">{{ project }}</a></h1>
+							{% else %}
+								<h1 class="account">
+									<a href="{{ account.get_absolute_url }}">{{ account.site_name }}</a>
+								</h1>
+							{% endif %}
+						{% else %}
+							<h1>Welcome to BM Stack!</h1>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+   <div class="container">
+	{% if messages %}
+	<div class="notice span-24 last">
+		<ul class="messages">
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% block index %}{% endblock %}
+       <div id="footer" class="span-24 last quiet"><a href="http://en.wikipedia.org/wiki/Business_Model_Canvas">Business Model Canvas</a>, Osterwalder, Pigneur & al. 2010, <a class="quiet" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.
+		<br />
+		Managed using Business Model Stack: <a class="last quiet" href="http://twitter.com/bmstack">Twitter</a>, <a class="last quiet" href="http://bmstack.posterous.com/">Blog</a>
+       </div>
+   </div>
+</body>
+</html>

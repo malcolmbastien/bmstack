@@ -1,0 +1,8 @@
+Hi {{ name }},
+
+{{ sender }} has invited you to join Business Model Stack, the easiest way to create and collaborate on business models online!
+
+To accept the invitation, please click the link below:
+{{ link }}
+
+-- BM Stack Team

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Idea
+{% endblock %}
+
+{% block index %}
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>New Update</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="/{{ account }}/projects/">Projects</a></li>
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+		<form action="/{{ account }}/projects/{{ project_id }}/updates/new/" method="POST">{% csrf_token %}
+			<h3>{{ form.title.label }}:<br />{{ form.title }}</h3>
+			<p>{{ form.update.label }}:<br />{{ form.update }}</p>
+			<p>{{ form.private_update.label }}: {{ form.private_update }}</p>
+			<input type="submit" value="Submit" />
+			<hr class="space" />
+			<a href="/{{ account }}/projects/{{ project_id }}/updates/">Cancel</a>
+		</form>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	Sidebar
+</div>
+{% endblock %}

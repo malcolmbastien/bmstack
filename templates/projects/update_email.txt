@@ -1,0 +1,9 @@
+Hi {{ name }},
+
+An commend has been added to the "{{ update }}" message. To see the comment visit this link:
+{{ link }}
+
+You've been sent this email because you've decided to track updates to this message. To stop receiving these emails visit this link and update your settings.
+{{ settings_link }}
+
+-- BM Stack Team

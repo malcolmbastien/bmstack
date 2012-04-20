@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Company
+{% endblock %}
+
+{% block index %}
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>New Person</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/">Projects</a></li>
+			<li><a href="/{{ account }}/companies/">People</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+		<form action="/{{ account }}/companies/{{ company_id }}/people/new/" method="POST">{% csrf_token %}
+		             {{ form.as_p }}
+		             <input type="submit" value="Submit" />
+		</form>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<p>Sidebar</p>
+</div>
+{% endblock %}

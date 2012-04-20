@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load webdesign %}
+{% block title %}
+Launchpad
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Launchpad</h2>
+	</div>
+	<div class="container_inner">
+		<p>Select which account to log into, or <a href="/add_account">create a new one</a>.</p>
+		{% if accountuser_list %}
+	        {% for accountuser in accountuser_list %}
+	            <h2><a href="{{ accountuser.account.get_absolute_url }}">{{ accountuser.account.site_name }}</a></h2>
+	        {% endfor %}
+		{% else %}
+		    <p>You are not a part of any BM APP accounts.</p>
+		{% endif %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/add_account">Create New Account</a></li>
+	</ul>
+</div>
+
+{% endblock %}

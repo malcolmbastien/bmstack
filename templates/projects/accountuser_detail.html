@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+People Detail
+{% endblock %}
+
+{% block index %} 
+<div class="span-16 box">
+    <h2>{{ object.user.first_name }} {{ object.user.last_name }}</h2>
+	<p>Company: {{ object.company }}</p>
+	{% if object.title %}<p>Title: {{ object.title }}</p>{% endif %}
+	{% if object.email %}<p>Email: {{ object.email }}</p>{% endif %}
+	{% if object.office %}
+	<p>
+		Office: {{ object.office }}
+		{% if object.office_ext %}
+		ext.{{ object.office_ext }}
+		{% endif %}
+	</p>
+	{% endif %}
+
+</div>
+<div class="span-7 last">
+</div>
+
+{% endblock %}

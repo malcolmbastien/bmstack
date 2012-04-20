@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+New Idea
+{% endblock %}
+
+{% block index %}
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Project Overview</h2>
+	</div>
+	<div class="container_inner">
+		<h3>Create your account</h3>
+		<form action="/signup/" method="POST">{% csrf_token %}
+			{% if form.first_name.errors %}<span class="error">{{ form.first_name.errors }}</span>{% endif %}
+			<p><strong>{{ form.first_name.label }}:</strong> {{ form.first_name }}</p>
+			{% if form.last_name.errors %}<span class="error">{{ form.last_name.errors }}</span>{% endif %}
+			<p><strong>{{ form.last_name.label }}:</strong> {{ form.last_name }}</p>
+			{% if form.email.errors %}<span class="error">{{ form.email.errors }}</span>{% endif %}
+			<p><strong>{{ form.email.label }}:</strong> {{ form.email }}</p>
+			{% if form.company.errors %}<span class="error">{{ form.company.errors }}</span>{% endif %}
+			<p><strong>{{ form.company.label }}:</strong> {{ form.company }}</p>
+			{% if form.username.errors %}<span class="error">{{ form.username.errors }}</span>{% endif %}
+			<p><strong>{{ form.username.label }}:</strong> {{ form.username }}</p>
+			{% if form.password.errors %}<span class="error">}{{ form.password.errors }}</span>{% endif %}
+			<p><strong>{{ form.password.label }}:</strong> {{ form.password }}</p>
+			{% if form.site_address.errors %}<span class="error">{{ form.site_address.errors }}</span>{% endif %}
+			<p><strong>{{ form.site_address.label }}:</strong> http://bmstack.com/ {{ form.site_address }}</strong></p>
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	Sidebar
+</div>
+{% endblock %}

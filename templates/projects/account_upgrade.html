@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Edit account info for {{ user.get_full_name }}</h2>
+	</div>
+	<div class="span-14 container_inner">
+		<p>Everything you need to manage your business model collaboration needs!.</p>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/">Dashboard</a></li>
+		<li><a href="/{{ account }}/companies/new/">Add a New Company</a></li>
+	</ul>
+</div>
+{% endblock %}

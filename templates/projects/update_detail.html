@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Update Detail
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Update</h2>
+		
+		<ul>
+			<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/">Canvases</a></li>
+			<li><a href="/{{ account }}/projects/{{ project.id }}/updates/">Updates</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+			<div class="span-2">
+			<img class="profile_image" src="{{ update.user.get_profile.profile_image }}" />
+		</div>
+		<div class="span-14 last">
+			<em>Posted {{ update.created_at|date:"D, j M \a\t g\:i a" }}</em>
+			<h2>{{ update.title }}</h2>
+			<p>{{ update.update }}</p>
+		</div>
+		{% if update_comments %}
+			<div class="span-2">
+				&nbsp;
+			</div>
+			<div class="span-14 last">
+				<h4>Comments ({{ update_comments.count }})</h4>
+				<hr />
+			</div>
+			{% for comment in update_comments %}
+				<div id="comment-{{ comment.id }}" class="span-16 canvas-comment">
+					<div class="span-2 commenter">
+						<img class="comment_profile_image" src="{{ comment.user.get_profile.profile_image }}" />
+					</div>
+					<div class="span-14 last">
+						<span><strong>{{ comment.user.get_full_name }}</strong> {{ comment.created_at|date:"D, j M \a\t g\:ia" }}</span><br />
+						<p>{{ comment.comment }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="canvas-comments">
+				<div class="span-2">&nbsp;</div>
+				<div class="span-14 last">
+					<strong>No comments.</strong>		
+				</div>
+			</div>
+		{% endif %}	
+	
+		<div class="span-16 canvas-comment">
+			<div class="span-2">
+				&nbsp;
+			</div>
+			<div class="span-14 last">
+				<h4>Add a comment:</h4>
+				<hr />
+			</div>
+			<div class="span-2 commenter">
+				<img class="comment_profile_image" src="{{ user.get_profile.profile_image }}" />
+			</div>
+			<div class="span-14 last comment-form">
+				<form action="/{{ account }}/projects/{{ project.id }}/updates/{{ update.id }}/" method="POST">{% csrf_token %}							
+					{{ form.comment }}
+			        <input type="submit" value="Comment" />
+				</form>
+			</div>
+		</div>	
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/new/">New Canvas</a></li>
+		<li><a href="/{{ account }}/projects/{{ project.id }}/updates/new/">New Update</a></li>
+	</ul>
+</div>
+<div class="span-5 sidebar last">
+	<h4>Users Notifications</h4>
+	<p>These users will receive a new email when a new activity occurs</p>
+	<ul>{{ user_list }}
+		{% for notify in notification_list %}
+			{% if notify.subscribed %}
+				<li>{{ notify.account_user.user.get_full_name }} {% if notify.account_user.user == user %}<a href="/{{ account }}/projects/{{ project.id }}/updates/{{ update.id }}/subscription/">unsubscribe</a>{% endif %}</li>
+			{% endif %}
+		{% endfor %}
+		{% if not notify_this_user %}
+		<li>You are not currently subscribed.<br />
+		<a class="button" href="/{{ account }}/projects/{{ project.id }}/updates/{{ update.id }}/subscription/">Subscribe</a></li>
+		{% endif %}
+	</ul>
+</div>
+{% endblock %}

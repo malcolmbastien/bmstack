@@ -1,0 +1,50 @@
+@import url('screen.css');
+
+a { text-decoration: none; color: #333; }
+a:hover {text-decoration: underline;}
+h1 a, h2 a {text-decoration: none; color: #333;}
+h1.account {float: left;}
+h2.idea {float: left; margin: 4px 0 0 5px;}
+h3 input { width: 87%; height: 25px; font-size: 1.05em;}
+form {padding: 10px;}
+textarea {width: 90%;}
+ul { list-style-type: none;}
+div.header {float: left; width: 100%; border: none; border-bottom: 5px solid #F1A73A; background-color: #fff; margin-bottom: 15px; }
+div.nav a, div.nav div {padding: 4px;}
+div.nav {padding: 0; margin: 0;}
+div.user {float: right;}
+
+div.generic_container {margin-bottom:1.5em; background-color: #FFF; border: 3px solid #ccc; }
+
+div.container_inner { padding: 1.5em; }
+div.container_inner ul { padding: 0; }
+div.container_inner ul li { display: inline; margin: 0 10px 0 0;}
+
+.orange {padding-top: 1.5em;}
+.orange p {padding: 0 1em;}
+.orange ul li {list-style: none;}
+.orange ul li a {font-size: 1.2em;}
+
+div.canvas-comment { float: left; width: 100%; margin: 0 0 0 10px; }
+div.canvas-comment span { width: 120px; float: left; font-weight: bold; }
+
+div.canvas-comment p { float: left; display: inline; width: 400px; }
+
+textarea#id_comment { height: 50px; }
+
+div.canvas-options { background-color: #E5E0CD; padding: 10px; }
+
+div.canvas-options ul {padding: 0; margin: 0; }
+
+div.canvas-options ul li {list-style: none; margin: 5px 0;}
+div.canvas-options ul li a {font-size: 1.2em;}
+
+div#idea_id, div#account, div#canvas_set_id { display: none; }
+
+p.hero-text { font-weight: bold; font-size: 2.4em;}
+
+div.homepage_container { background-color: #fff; margin-top: 20px; }
+div.homepage_container h2 { border-bottom: 1px solid #eee; margin-top: 20px; }
+div.login { text-align: right; padding-bottom: 2px; }
+
+div.features img { border: 2px solid #ddd; height: 230px; width: 230px;}

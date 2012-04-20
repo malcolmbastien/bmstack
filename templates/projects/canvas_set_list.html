@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load tagging_tags %}
+{% block title %}
+Canvas List
+{% endblock %}
+
+{% block index %} 
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Canvases</h2>
+		
+		<ul class="container_nav">
+			<li><a href="/{{ account }}/">Projects</a></li>
+			<li><a href="/{{ account }}/projects/{{ project.id }}/updates/">Updates</a></li>
+		</ul>
+	</div>
+	<div class="container_inner">
+		{% if canvas_sets %}
+		    <ul id="canvas-list">
+		        {% for canvas_set in canvas_sets.object_list %}
+		            <li>
+		                <div>
+							<a href="{{ canvas_set.get_latest_canvas }}"><img src="/site_media/images/mini-canvas.png" alt="mini canvas" /></a>
+							<span class="canvas-info">
+								<strong><a href="{{ canvas_set.latest_canvas.get_absolute_url }}">{{ canvas_set.name }}</a></strong><br />
+									Version: {{ canvas_set.latest_canvas.version }}
+							</span>
+							<span class="canvas-meta">Created: {{ canvas_set.latest_canvas.created_at }},
+									<a href="{{ canvas_set.get_absolute_url }}">View details</a>.</span>
+						</div>
+		            </li>
+		        {% endfor %}
+		    </ul>
+			{% if action_list.paginator.num_pages < 2 %}
+			{% else %}
+			<div class="pagination">
+			    <span class="step-links">
+			        {% if canvas_sets.has_previous %}
+			            <a href="?page={{ canvas_sets.previous_page_number }}">previous</a>
+			        {% endif %}
+
+			        <span class="current">
+			            Page {{ canvas_sets.number }} of {{ canvas_sets.paginator.num_pages }}.
+			        </span>
+
+			        {% if canvas_sets.has_next %}
+			            <a href="?page={{ canvas_sets.next_page_number }}">next</a>
+			        {% endif %}
+			    </span>
+			</div>
+			{% endif %}
+		{% else %}
+		    <p><a href="/{{ account }}/projects/{{ project.id }}/canvases/new/">Create new canvas</a></p>
+		{% endif %}
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/new/">Create new canvas</a></li>
+	</ul>
+</div>
+
+<div class="span-5 sidebar last">
+	<h4>Canvas Tags</h4>
+	<ul>
+		{% tags_for_model projects.Canvas as canvas_tags with counts %}
+		{% for tag in canvas_tags %}
+		<li><a href="/{{ account }}/projects/{{ project.id }}/canvases/tag/{{ tag }}">{{ tag }}</a> ({{ tag.count }})</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<html>
+<head>
+{% load webdesign %}
+<title>Business Model Stack</title>
+<meta name="google-site-verification" content="R6kAssxTANpnWHTTGXKR8--J2jU65qpp_ikq0bfmZkE" />
+<link rel="stylesheet" href="/site_media/stylesheets/homepage.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/jquery-ui-1.8.2.custom.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/stylesheets/print.css" type="text/css" media="print">
+<script type="text/javascript" src="/site_media/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui-1.8.2.custom.min.js"></script>
+{{ form.media }}
+</head>
+
+<div class="container">
+	
+	<div class="span-24 homepage_container last">
+		<div class="span-22 login"><a href="/login">Login</a></div>
+		<div class="span-2 last login"><a href="/signup">Signup</a></div>
+		<div class="span-9">
+				<h1>Business Model Stack</h1>
+				<p class="hero-text">
+					Create Business Models.<br />
+					Give Feedback. <br />
+					Create Better Models.
+				</p>
+		</div>
+		<div class="span-15 last">
+				<img src="/site_media/images/hero-canvas.png" alt="Hero Canvas" width="590px"/>
+		</div>
+		
+		<div class="span-24 last features">
+			<h2>Features</h2>
+			<div class="span-6">
+				<h3>Describe It</h3>
+				<img src="/site_media/images/feature-1.png" alt="" />
+			</div>
+			<div class="span-6">
+				<h3>Discuss It</h3>
+				<img src="/site_media/images/feature-3.png" alt="" />
+			</div>
+			<div class="span-6">
+				<h3>Improve It</h3>
+				<img src="/site_media/images/feature-2.png" alt="" />
+			</div>
+			<div class="span-6 last">
+				<h3>Implement It</h3>
+				<img src="/site_media/images/feature-4.png" alt="" />
+			</div>
+		</div>
+
+		<div class="span-24 last features">
+			<h2>Info</h2>
+			<div class="span-6">
+				<h3>Users</h3>
+				<h1>{{ users }}</h1>
+			</div>
+			<div class="span-6">
+				<h3>Projects</h3>
+				<h1>{{ projects }}</h1>
+			</div>
+			<div class="span-6">
+				<h3>Canvases</h3>
+				<h1>{{ canvases }}</h1>
+			</div>
+		</div>
+
+		<div class="span-24 last features">
+				<h2>Credits</h2>
+				<p class="large">Based on the work of Alexander Osterwalder, Yves Pigneur, Alan Smith, Patrick Van der Pijl, Tim Clark. <strong><a href="http://businessmodelgeneration.com">Business Model Generation</a></strong>.</p>
+				<p class="quiet">Business Model Canvas, Osterwalder, Pigneur & al. 2010, Creative Commons Attribution-Share Alike 3.0 Unported License. <a href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a></p>
+		</div>
+
+	</div>
+</div>

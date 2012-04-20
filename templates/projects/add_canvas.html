@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load truncate %}
+{% block title %}
+New Canvas
+{% endblock %}
+
+{% block script %}
+var data = {{ data|safe }};
+{% endblock %}
+{% block index %}
+<form method="post" id="canvas-form" action="/{{ account }}/projects/{{ project.id }}/canvases/new/" >{% csrf_token %}	
+<div class="span-24 last">
+	<h3 class="canvas-title">{{ canvas_set.name }}</h3>
+	
+	<div id="project_id">{{ project.id }}</div>
+	<div id="account">{{ account }}</div>
+	<div id="canvas_set_id">{{ canvas_set.id }}</div>
+	<div id="canvas_id">{{ canvas.id }}</div>
+</div>
+<div id="canvas" class="span-24 canvas last">
+	<div id="kp" class="span-4">
+		<h4 id="kp-tip">Key Partners</h4> 
+		<ul id="kp-fields">
+			<li>
+			{% for field in field_forms.kp %}
+			{{ field }}
+			{% endfor %}
+			</li>
+			<ul id="kp-field-list" class="form-field-list field-list">
+			</ul>
+		</ul>
+	</div>
+	
+	<div class="span-5 ">
+		<div id="ka" class="span-5 last">
+			<h4>Key Activities</h4>
+			<ul id="ka-fields">
+				<li>
+				{% for field in field_forms.ka %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="ka-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	
+		<div id="kr" class="span-5 last">
+			<h4>Key Resources</h4>
+			<ul id="kr-fields">
+				<li>
+				{% for field in field_forms.kr %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="kr-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="vp" class="span-6">
+		<h4>Value Proposition</h4>
+		<ul id="vp-fields">
+			<li>
+			{% for field in field_forms.vp %}
+			{{ field }}
+			{% endfor %}
+			</li>
+			<ul id="vp-field-list" class="form-field-list field-list ui-sortable">
+			</ul>
+		</ul>
+	</div>
+
+	<div class="span-5">
+		<div id="cr" class="span-5 last">
+			<h4>Customer Relationships</h4>
+			<ul id="cr-fields">
+				<li>
+				{% for field in field_forms.cr %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="cr-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	
+		<div id="ch" class="span-5 last">
+			<h4>Channels</h4>
+			<ul id="ch-fields">
+				<li>
+				{% for field in field_forms.ch %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="ch-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="cs" class="span-4 last">
+		<h4>Customer Segments</h4>
+		<ul id="cs-fields">
+			<li>
+			{% for field in field_forms.cs %}
+			{{ field }}
+			{% endfor %}
+			</li>
+			<ul id="cs-field-list" class="form-field-list field-list ui-sortable">
+			</ul>
+		</ul>
+	</div>
+	
+	<div class="span-24 last">
+		<div id="co" class="span-12">
+			<h4>Cost Structure</h4>
+			<ul id="co-fields">
+				<li>
+				{% for field in field_forms.co %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="co-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	
+		<div id="rs" class="span-12 last">
+			<h4>Revenue Streams</h4>
+			<ul id="rs-fields">
+				<li>
+				{% for field in field_forms.rs %}
+				{{ field }}
+				{% endfor %}
+				</li>
+				<ul id="rs-field-list" class="form-field-list field-list ui-sortable">
+				</ul>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="span-18 generic_container canvas-detail">
+	<div class="container-inner span-16 last">
+		<div class="span-16">
+			<h4>Canvas Notes:</h4>
+			{{ form.notes }}
+			<h4>Tags (comma separated):</h4>
+			{{ form.tags }}
+		</div>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		{% if canvas %}
+			{% if user == canvas.created_by %}<li><a id="update">Update Canvas</a></li>{% endif %}
+			<li><a id="new">Save as New Canvas</a></li>
+		{% else %}
+			<li><a id="new">Save New Canvas</a></li>
+		{% endif %}
+		<li><a id="clear">Clear Canvas</a></li>
+	</ul>
+</div>
+</form>
+{% endblock %}

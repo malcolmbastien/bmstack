@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block index %}
+<div class="span-18 generic_container">
+	<div class="page_header">
+		<h2>Login</h2>
+	</div>
+	<div class="container_inner">
+		{% if form.errors %}
+		<p>Your username and password didn't match. Please try again.</p>
+		{% endif %}
+		<div class="login-form">
+			<form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+			<table>
+			<tr>
+			    <td>{{ form.username.label_tag }}</td>
+			    <td>{{ form.username }}</td>
+			</tr>
+			<tr>
+			    <td>{{ form.password.label_tag }}</td>
+			    <td>{{ form.password }}</td>
+			</tr>
+			</table>
+
+			<input type="submit" value="login" />
+			<input type="hidden" name="next" value="{{ next }}" />
+			</form>
+		</div>
+	</div>
+</div>
+<div class="span-5 sidebar sidebar-buttons last">
+	<ul>
+		<li>
+			<a href="/signup/">Sign up with Business Model Stack</a>
+		</li>
+	</ul>
+</div>
+{% endblock %}
